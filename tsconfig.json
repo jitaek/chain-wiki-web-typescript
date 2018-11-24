@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "lib": ["es6", "dom"],
     "sourceMap": true,
+    "experimentalDecorators": true,
   },
   "include": [
     "src"
