@@ -26,5 +26,3 @@ export const IS_TEST_ENVIRONMENT = isTestEnvironment;
 
 export const GAKEY = 'UA-70981211-1';
 
-// export const greenColor = '#68a283'
-
