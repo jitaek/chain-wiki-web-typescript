@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, IconButton, withStyles } from '@material-ui/core';
+import { Drawer, IconButton, withStyles, Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { DrawerProps } from '@material-ui/core/Drawer';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
@@ -32,6 +32,14 @@ const SideDrawer = (props: Props) => {
                 <ChevronRightIcon />
                 </IconButton>
             </div>
+            <Divider/>
+            <List>
+            {['아르카나', '필터', '어빌리티', '주점'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+            </List>
 
         </Drawer>
     );
