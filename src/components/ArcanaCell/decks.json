@@ -33,9 +33,11 @@
                     "iconURL": "https://firebasestorage.googleapis.com/v0/b/chainchronicle-ea233.appspot.com/o/image%2Farcana%2F-LIl8-hT1392SFPARxDs%2Ficon.jpg?alt=media&token=ae0b9a5b-7299-4bbb-b731-daaf87465766"
                 },
                 {
+                    "arcanaID": "2",
                     "iconURL": "logo.png"
                 },
                 {
+                    "arcanaID": "3",
                     "iconURL": "logo.png"
                 }
             ],
