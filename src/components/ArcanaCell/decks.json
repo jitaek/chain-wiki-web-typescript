@@ -5,6 +5,7 @@
         "arcana": {
             "main": [
                 {
+                    "arcanaID": "-KlU9xNr8LuBkkH-rSZu",
                     "nameKR": "츠루",
                     "nicknameKR": "대약진의 구령 영주",
                     "nameJP": "ツル",
@@ -18,8 +19,17 @@
                     "iconURL": "https://firebasestorage.googleapis.com/v0/b/chainchronicle-ea233.appspot.com/o/image%2Farcana%2F-KlU9xNr8LuBkkH-rSZu%2Ficon.jpg?alt=media&token=1fc949a1-b0bd-4a31-b10b-f057a90c325a"
                 },
                 {
+                    "arcanaID": "-LIl8-hT1392SFPARxDs",
                     "nameKR": "슈자",
-                    "cost": 22,
+                    "nicknameKR": "万鬼 統馭 아홉 령 필두",
+                    "nameJP": "ツル",
+                    "nicknameJP": "万鬼統馭の九領筆頭",
+                    "rarity": "5",
+                    "affiliation": "구령",
+                    "numberOfViews": "201",
+                    "weapon": "검",
+                    "class": "전사",
+                    "cost": 24,
                     "iconURL": "https://firebasestorage.googleapis.com/v0/b/chainchronicle-ea233.appspot.com/o/image%2Farcana%2F-LIl8-hT1392SFPARxDs%2Ficon.jpg?alt=media&token=ae0b9a5b-7299-4bbb-b731-daaf87465766"
                 },
                 {
