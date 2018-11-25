@@ -57,8 +57,7 @@ const styles = (theme: any) => ({
     }),
   },
   menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
+    marginLeft: -12,
   },
   hide: {
     display: 'none',
@@ -128,9 +127,7 @@ class NavBar extends React.Component<Props> {
           >
               <Toolbar>
                   <IconButton
-                    style={{
-                      marginLeft: -12,
-                    }}
+                    className={classNames(classes.menuButton, showDrawer && classes.hide)}
                     onClick={navBarStore.setDrawerOpen}
                   >
                     <MenuIcon color='secondary'/>
