@@ -8,13 +8,14 @@ import { Switch, Route } from 'react-router';
 import classNames from 'classnames';
 import { inject, observer } from 'mobx-react';
 import RootStore from './stores/RootStore';
+import Home from './pages/Home/Home';
 
 const drawerWidth = 240;
 
 const styles = (theme: any) => ({
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    // padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -73,7 +74,7 @@ class App extends React.Component<Props> {
             >
               <div className={classes.drawerHeader} />
                 <Switch>
-                  <Route exact={true} path='/'/>
+                  <Route exact={true} path='/' component={Home}/>
                 </Switch>
             </main>
           </div>
