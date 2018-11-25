@@ -9,6 +9,8 @@ import styled from 'styled-components';
 import { ButtonProps } from '@material-ui/core/Button';
 import Drawer from './Drawer';
 import classNames from 'classnames';
+import { inject, observer } from 'mobx-react';
+import RootStore from '../../stores/RootStore';
 
 const navBarTheme = createMuiTheme({
   palette: {
@@ -97,35 +99,31 @@ interface Props {
   classes?: any,
   theme?: any,
 }
+
+interface InjectedProps extends Props {
+  rootStore: RootStore
+}
+@inject('rootStore')
+@observer
 class NavBar extends React.Component<Props> {
 
-  state = {
-    open: true
-  }
-
-  handleDrawerClose = () => {
-    this.setState({
-      open: false
-    });
-  }
-
-  handleDrawerOpen = () => {
-    this.setState({
-      open: true
-    });
+  get injected() {
+    return this.props as InjectedProps;
   }
 
   render() {
 
-    const { classes, theme } = this.props;
-    const { open } = this.state;
+    const { classes } = this.props;
+    const { rootStore } = this.injected;
+    const navBarStore = rootStore.navBarStore;
+    const { showDrawer } = navBarStore;
 
     return (
       <MuiThemeProvider theme={navBarTheme}>
           <AppBar
             position="fixed"
             className={classNames(classes.appBar, {
-              [classes.appBarShift]: open,
+              [classes.appBarShift]: showDrawer,
             })}
           >
               <Toolbar>
@@ -133,7 +131,7 @@ class NavBar extends React.Component<Props> {
                     style={{
                       marginLeft: -12,
                     }}
-                    onClick={this.handleDrawerOpen}
+                    onClick={navBarStore.setDrawerOpen}
                   >
                     <MenuIcon color='secondary'/>
                   </IconButton>
@@ -147,8 +145,8 @@ class NavBar extends React.Component<Props> {
           </AppBar>
           <Drawer
             className={classes.drawer}
-            open={open}
-            handleDrawerClose={this.handleDrawerClose}
+            open={showDrawer}
+            handleDrawerClose={navBarStore.setDrawerClose}
             classes={{
               paper: classes.drawerPaper,
             }}

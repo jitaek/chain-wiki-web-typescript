@@ -7,6 +7,14 @@ export default class NavBarStore {
     
     @observable showDrawer = false;
 
+    @action setDrawerClose = () => {
+        this.showDrawer = false;
+    }
+    
+    @action setDrawerOpen = () => {
+        this.showDrawer = true;
+    }
+    
     constructor(rootStore: RootStore) {
         this.rootStore = rootStore;
     }
