@@ -11,6 +11,7 @@ import Drawer from './Drawer';
 import classNames from 'classnames';
 import { inject, observer } from 'mobx-react';
 import RootStore from '../../stores/RootStore';
+import SearchBar from '../SearchBar.tsx/SearchBar';
 
 const navBarTheme = createMuiTheme({
   palette: {
@@ -136,8 +137,9 @@ class NavBar extends React.Component<Props> {
                     component={HomeLink}
                   >
                     <img src={Logo} style={{width: '40px', height: '40px'}}/>
-                    <Typography style={{marginLeft: '8px', fontSize: '22px', fontWeight:600}}>위키</Typography>
+                    <Typography variant='h6' style={{marginLeft: '8px'}}>위키</Typography>
                   </HomeButton>
+                  <SearchBar/>
               </Toolbar>
           </AppBar>
           <Drawer

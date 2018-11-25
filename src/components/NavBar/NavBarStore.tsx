@@ -6,6 +6,8 @@ export default class NavBarStore {
     rootStore: RootStore;
     
     @observable showDrawer = false;
+    @observable searchText = '';
+    @observable namesArray = [];
 
     @action setDrawerClose = () => {
         this.showDrawer = false;
@@ -14,7 +16,28 @@ export default class NavBarStore {
     @action setDrawerOpen = () => {
         this.showDrawer = true;
     }
+
+    @action setSearchText = (text: string) => {
+        this.searchText = text;
+    }
+
+    @action setNamesArray = (array: []) => {
+        this.namesArray = array;
+    }
+
+    @action getSearchResults():Array<any> {
+
+        let filteredArray = this.namesArray.filter((arcana: any) => {
+            return arcana.nameKR.includes(this.searchText);
+        });
+        filteredArray = filteredArray.slice(0, 5);
+        return filteredArray;
+    }
     
+    @computed get showAutoComplete() {
+        return this.searchText !== '';
+    }
+
     constructor(rootStore: RootStore) {
         this.rootStore = rootStore;
     }
