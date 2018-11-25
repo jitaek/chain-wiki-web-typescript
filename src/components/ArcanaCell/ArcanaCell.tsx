@@ -1,15 +1,10 @@
 import React from 'react'
 import logo from '../../logo.png'
-import { Link } from 'react-router-dom'
+import Link from '../Link/Link';
 import LazyLoad from 'react-lazyload';
 import styled from 'styled-components';
 import FlexContainer from '../FlexContainer';
 import { lightGrayColor, lightGrayTextColor } from '../../util/theme';
-
-const LinkStyle = {
-    textDecoration: 'none',
-    color: 'inherit'
-};
 
 interface Props {
     arcana: any;
@@ -68,7 +63,7 @@ const ArcanaCell = (props: Props) => {
             imageURL, iconURL, rarity, weapon, affiliation, numberOfViews } = arcana;
 
     return (
-        <Link to={`/arcana?arcana=${arcanaID}`} style={LinkStyle}>
+        <Link to={`/arcana?arcana=${arcanaID}`}>
         <ArcanaCard>
             <LazyLoad height={66} debounce={300} once={true}>
                 <ArcanaIcon

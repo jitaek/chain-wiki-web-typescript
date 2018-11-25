@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, withRouter } from "react-router-dom";
+import Link from '../Link/Link';
 import { AppBar, Toolbar, IconButton, MuiThemeProvider, SvgIcon, Button, Typography, withStyles } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { greenColor } from '../../util/theme';
