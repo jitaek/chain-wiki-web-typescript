@@ -9,6 +9,8 @@ import classNames from 'classnames';
 import { inject, observer } from 'mobx-react';
 import RootStore from './stores/RootStore';
 import Home from './pages/Home/Home';
+import DevTools from 'mobx-react-devtools';
+import { IS_TEST_ENVIRONMENT } from './util/config';
 
 const drawerWidth = 240;
 
@@ -79,6 +81,7 @@ class App extends React.Component<Props> {
             </main>
           </div>
         </MuiThemeProvider>
+        {IS_TEST_ENVIRONMENT && <DevTools/>}
       </div>
     );
   }
