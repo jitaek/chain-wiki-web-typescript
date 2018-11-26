@@ -10,4 +10,5 @@ Migrated to Typescript from previous repo: https://github.com/jitaek/chain-wiki-
 
 ### Run Project
 1. Clone this repository
-2. `npm start`
+2. `npm install`
+3. `npm start`
