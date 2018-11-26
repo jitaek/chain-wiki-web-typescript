@@ -8,6 +8,7 @@ export default class NavBarStore {
     @observable showDrawer = false;
     @observable searchText = '';
     @observable namesArray = [];
+    @observable showSuggestions = false;
 
     @action setDrawerClose = () => {
         this.showDrawer = false;
@@ -19,6 +20,14 @@ export default class NavBarStore {
 
     @action setSearchText = (text: string) => {
         this.searchText = text;
+    }
+
+    @action clearSearchText = () => {
+        this.searchText = '';
+    }
+
+    @action setShowSuggestions = (showSuggestions: boolean) => {
+        this.showSuggestions = showSuggestions;
     }
 
     @action setNamesArray = (array: []) => {
@@ -33,11 +42,11 @@ export default class NavBarStore {
         filteredArray = filteredArray.slice(0, 5);
         return filteredArray;
     }
-    
-    @computed get showAutoComplete() {
-        return this.searchText !== '';
-    }
 
+    @action showArcana = (arcanaID: string) => {
+        this.setShowSuggestions(false);
+        this.rootStore.routerStore.push(`arcana?arcana=${arcanaID}`);
+    }
     constructor(rootStore: RootStore) {
         this.rootStore = rootStore;
     }

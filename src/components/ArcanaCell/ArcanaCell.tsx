@@ -5,6 +5,7 @@ import LazyLoad from 'react-lazyload';
 import styled from 'styled-components';
 import FlexContainer from '../FlexContainer';
 import { lightGrayColor, lightGrayTextColor } from '../../util/theme';
+import ArcanaIcon from './ArcanaIcon';
 
 interface Props {
     arcana: any;
@@ -17,13 +18,6 @@ const ArcanaCard = styled.div`
     &:hover {
         background-color: ${lightGrayColor};
     }
-`;
-
-const ArcanaIcon = styled.img`
-    margin: 10px;
-    height: 66px;
-    width: 66px;
-    float: left;
 `;
 
 const NameKRLabel = styled.div`
