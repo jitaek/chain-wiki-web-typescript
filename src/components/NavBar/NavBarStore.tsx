@@ -43,6 +43,10 @@ export default class NavBarStore {
         return filteredArray;
     }
 
+    @action showArcana = (arcanaID: string) => {
+        this.setShowSuggestions(false);
+        this.rootStore.routerStore.push(`arcana?arcana=${arcanaID}`);
+    }
     constructor(rootStore: RootStore) {
         this.rootStore = rootStore;
     }

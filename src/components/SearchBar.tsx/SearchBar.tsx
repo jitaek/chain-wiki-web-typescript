@@ -102,7 +102,8 @@ class SearchBar extends React.Component<Props> {
                 <Downshift
                     onSelect={(selectedItem: any, stateAndHelpers: object) => {
                         const arcanaID = selectedItem.arcanaID;
-                        rootStore.routerStore.push(`arcana?arcana=${arcanaID}`);
+                        this.textInput.current.blur();
+                        navBarStore.showArcana(arcanaID);
                     }}
                 >
                     {({
@@ -147,15 +148,6 @@ class SearchBar extends React.Component<Props> {
                                         }
                                     />
                                     </FormControl>
-                                {/* <TextField
-                                    placeholder='이름 검색'
-                                    fullWidth={true}
-                                    onFocus={this.observeNames}
-                                    onChange={(e: any) => {     
-                                        navBarStore.setSearchText(e.target.value);
-                                    }}
-
-                                /> */}
                                 <div {...getMenuProps()}>
                                 {
                                     (showSuggestions && searchText !== '') &&
