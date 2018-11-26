@@ -8,6 +8,7 @@ export default class NavBarStore {
     @observable showDrawer = false;
     @observable searchText = '';
     @observable namesArray = [];
+    @observable showSuggestions = false;
 
     @action setDrawerClose = () => {
         this.showDrawer = false;
@@ -21,6 +22,14 @@ export default class NavBarStore {
         this.searchText = text;
     }
 
+    @action clearSearchText = () => {
+        this.searchText = '';
+    }
+
+    @action setShowSuggestions = (showSuggestions: boolean) => {
+        this.showSuggestions = showSuggestions;
+    }
+
     @action setNamesArray = (array: []) => {
         this.namesArray = array;
     }
@@ -32,10 +41,6 @@ export default class NavBarStore {
         });
         filteredArray = filteredArray.slice(0, 5);
         return filteredArray;
-    }
-    
-    @computed get showAutoComplete() {
-        return this.searchText !== '';
     }
 
     constructor(rootStore: RootStore) {

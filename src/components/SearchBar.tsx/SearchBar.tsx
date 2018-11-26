@@ -1,12 +1,13 @@
 import * as React from 'react';
 import Downshift from 'downshift';
-import { TextField, withStyles, Paper, MenuItem, Typography } from '@material-ui/core';
+import { TextField, withStyles, Paper, MenuItem, Typography, FormControl, InputLabel, Input, InputAdornment, IconButton } from '@material-ui/core';
 import styled from 'styled-components';
 import { PaperProps } from '@material-ui/core/Paper';
 import { inject, observer } from 'mobx-react';
 import RootStore from '../../stores/RootStore';
 import { BASE_REF } from '../../util/config';
 import ArcanaIcon from '../ArcanaCell/ArcanaIcon';
+import Clear from '@material-ui/icons/Clear';
 
 const StyledPaper = styled(Paper as React.SFC<PaperProps>)`
     position: absolute;
@@ -28,8 +29,15 @@ interface InjectedProps extends Props {
 @observer
 class SearchBar extends React.Component<Props> {
 
+    textInput: any
+
     get injected() {
         return this.props as InjectedProps;
+    }
+
+    constructor(props: Props) {
+        super(props);
+        this.textInput = React.createRef();
     }
 
     componentDidMount() {
@@ -85,11 +93,11 @@ class SearchBar extends React.Component<Props> {
 
         const { rootStore } = this.injected;
         const navBarStore = rootStore.navBarStore;
-        const { searchText } = navBarStore;
+        const { searchText, showSuggestions } = navBarStore;
 
         return (
             <div
-                style={{flexGrow: 1}}
+                style={{flexGrow: 1, maxWidth: '300px'}}
             >
                 <Downshift
                     onSelect={(selectedItem: any, stateAndHelpers: object) => {
@@ -108,7 +116,38 @@ class SearchBar extends React.Component<Props> {
                         selectedItem,
                         }) => (
                             <div>
-                                <TextField
+                                <FormControl fullWidth={true}>
+                                    <Input
+                                        inputRef={this.textInput}
+                                        placeholder='이름 검색'
+                                        value={navBarStore.searchText}
+                                        onFocus={() => {
+                                            this.observeNames();
+                                            navBarStore.setShowSuggestions(true);
+                                        }}
+                                        onBlur={() => 
+                                            navBarStore.setShowSuggestions(false)
+                                        }
+                                        onChange={(e: any) => {     
+                                            navBarStore.setSearchText(e.target.value);
+                                        }}
+                                        endAdornment={
+                                            searchText !== '' &&
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                aria-label="지우기"
+                                                onClick={() => {
+                                                    navBarStore.clearSearchText();
+                                                    this.textInput.current.focus()
+                                                }}
+                                                >
+                                                    <Clear/>
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                    />
+                                    </FormControl>
+                                {/* <TextField
                                     placeholder='이름 검색'
                                     fullWidth={true}
                                     onFocus={this.observeNames}
@@ -116,9 +155,10 @@ class SearchBar extends React.Component<Props> {
                                         navBarStore.setSearchText(e.target.value);
                                     }}
 
-                                />
+                                /> */}
                                 <div {...getMenuProps()}>
-                                {navBarStore.showAutoComplete ? (
+                                {
+                                    (showSuggestions && searchText !== '') &&
                                     <StyledPaper
                                         square
                                     >
@@ -138,7 +178,7 @@ class SearchBar extends React.Component<Props> {
                                             </MenuItem>
                                         )}                            
                                     </StyledPaper>
-                                ) : null}
+                                }
                                 </div>
                             </div>
                         )
