@@ -17,6 +17,7 @@
     "react-lazyload": "^2.3.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
+    "react-swipeable-views": "^0.13.0",
     "styled-components": "^4.1.1"
   },
   "scripts": {
@@ -40,6 +41,7 @@
     "@types/react-dom": "^16.0.10",
     "@types/react-lazyload": "^2.3.1",
     "@types/react-router-dom": "^4.3.1",
+    "@types/react-swipeable-views": "^0.12.2",
     "@types/styled-components": "^4.1.1",
     "mobx-react-devtools": "^6.0.3",
     "typescript": "^3.1.6"

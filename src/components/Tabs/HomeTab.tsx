@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Tabs, Tab } from '@material-ui/core';
 import styled from '../../util/styled-components';
 import { TabProps } from '@material-ui/core/Tab';
+import SwipeableViews from 'react-swipeable-views';
+import ArcanaList from '../ArcanaList/ArcanaList';
 
 const StyledTab = styled(Tab as React.SFC<TabProps>)`
     && {
@@ -27,21 +29,35 @@ class HomeTab extends React.Component<Props> {
         this.setState({ value });
     };
 
+    handleChangeIndex = (index: number) => {
+        this.setState({ value: index });
+    };
+
     render() {
         return (
-            <Tabs
-                value={this.state.value}
-                onChange={this.handleChange}
-                indicatorColor="primary"
-                fullWidth
-            >
-                {CATEGORIES.map(category => 
-                    <StyledTab
-                        label={category}
-                        disableRipple={true}
+            <div>
+                <Tabs
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                    indicatorColor="primary"
+                    fullWidth
+                >
+                    {CATEGORIES.map(category => 
+                        <StyledTab
+                            label={category}
+                            disableRipple={true}
+                        />
+                    )}
+                </Tabs>
+                <SwipeableViews
+                    index={this.state.value}
+                    onChangeIndex={this.handleChangeIndex}
+                >
+                    <ArcanaList
+                        arcanaArray={this.props.rewardArray}
                     />
-                )}
-            </Tabs>
+                </SwipeableViews>
+            </div>
         );
     }
 }
