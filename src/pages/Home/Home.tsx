@@ -21,16 +21,55 @@ export default class Home extends React.Component<Props> {
         return this.props as InjectedProps;
     }
 
+    componentWillMount() {
+
+        const { rootStore } = this.injected;
+        rootStore.homeStore.fetchRecentArcana();
+
+    }
+
+    componentDidMount() {
+        window.addEventListener("scroll", this.handleScroll);
+    }
+
+    componentWillUnmount() {
+
+        const { rootStore } = this.injected;
+        const { homeStore } = rootStore;
+        let fetchedArcanaCount = homeStore.recentArray.length
+        sessionStorage.setItem('fetchedArcanaCount', String(fetchedArcanaCount));
+    
+        window.removeEventListener("scroll", this.handleScroll)
+
+      }
+
+    handleScroll = () => {
+        const d = document.documentElement;
+        if (d) {
+            const offset = d.scrollTop + window.innerHeight;
+            const height = d.offsetHeight;
+        
+            const offsetY = window.pageYOffset    
+            sessionStorage.setItem('scroll', String(offsetY));
+            if (offset === height) {
+                const { rootStore } = this.injected;
+                rootStore.homeStore.fetchRecentArcana(20);
+            }
+        }
+
+      }
+
     render() {
 
         const { rootStore } = this.injected;
         const { homeStore } = rootStore;
         const { rewardArray, festivalArray, recentArray, legendArray, abyssalArray } = homeStore;
-        
+
         return (
             <div>
                 <HomeTab
                     rewardArray={mockDecks[0].arcana.main}
+                    recentArray={homeStore.recentArray}
                 />
             </div>
         );

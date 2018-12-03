@@ -16,7 +16,8 @@ const StyledTab = styled(Tab as React.SFC<TabProps>)`
 const CATEGORIES: string[] = ['보상', '페스티벌', '최신', '레전드', '천마'];
 
 interface Props {
-    rewardArray: [];
+    rewardArray: any[];
+    recentArray: any[];
 }
 
 class HomeTab extends React.Component<Props> {
@@ -55,6 +56,12 @@ class HomeTab extends React.Component<Props> {
                 >
                     <ArcanaList
                         arcanaArray={this.props.rewardArray}
+                    />
+                    <ArcanaList
+                        arcanaArray={this.props.rewardArray}
+                    />
+                    <ArcanaList
+                        arcanaArray={this.props.recentArray}
                     />
                 </SwipeableViews>
             </div>

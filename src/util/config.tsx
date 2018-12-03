@@ -15,7 +15,7 @@ if (useTestConfig) {
 else {
     config = {
         apiKey: "AIzaSyBD9eX7ABB0Xu1N6CnSdKL-bnsNF5WgLtc",
-        authDomain: "chainchronicle-ea233.firebaseapp.com",
+        // authDomain: "chainchronicle-ea233.firebaseapp.com",
         databaseURL: "https://chainchronicle-ea233.firebaseio.com",
         projectId: "chainchronicle-ea233",
         storageBucket: "chainchronicle-ea233.appspot.com",

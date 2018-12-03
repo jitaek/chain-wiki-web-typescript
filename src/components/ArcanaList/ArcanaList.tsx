@@ -2,7 +2,7 @@ import * as React from 'react'
 import ArcanaCell from '../../components/ArcanaCell/ArcanaCell';
 
 interface Props {
-    arcanaArray: [],
+    arcanaArray: any[],
     viewType?: 'grid' | 'list'
 }
 const ArcanaList: React.SFC<Props> = props => {
