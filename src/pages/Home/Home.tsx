@@ -24,7 +24,7 @@ export default class Home extends React.Component<Props> {
     componentWillMount() {
 
         const { rootStore } = this.injected;
-        rootStore.homeStore.fetchRecentArcana();
+        rootStore.homeStore.fetchArcana();
 
     }
 
@@ -68,8 +68,11 @@ export default class Home extends React.Component<Props> {
         return (
             <div>
                 <HomeTab
-                    rewardArray={mockDecks[0].arcana.main}
+                    rewardArray={homeStore.rewardArray}
+                    festivalArray={homeStore.festivalArray}
                     recentArray={homeStore.recentArray}
+                    legendArray={homeStore.legendArray}
+                    abyssalArray={homeStore.abyssalArray}
                 />
             </div>
         );

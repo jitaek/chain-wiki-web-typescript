@@ -17,7 +17,10 @@ const CATEGORIES: string[] = ['보상', '페스티벌', '최신', '레전드', '
 
 interface Props {
     rewardArray: any[];
+    festivalArray: any[];
     recentArray: any[];
+    legendArray: any[];
+    abyssalArray: any[];
 }
 
 class HomeTab extends React.Component<Props> {
@@ -58,10 +61,16 @@ class HomeTab extends React.Component<Props> {
                         arcanaArray={this.props.rewardArray}
                     />
                     <ArcanaList
-                        arcanaArray={this.props.rewardArray}
+                        arcanaArray={this.props.festivalArray}
                     />
                     <ArcanaList
                         arcanaArray={this.props.recentArray}
+                    />
+                    <ArcanaList
+                        arcanaArray={this.props.legendArray}
+                    />
+                    <ArcanaList
+                        arcanaArray={this.props.abyssalArray}
                     />
                 </SwipeableViews>
             </div>
