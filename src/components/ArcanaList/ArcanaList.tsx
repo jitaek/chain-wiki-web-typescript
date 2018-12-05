@@ -13,7 +13,7 @@ const ArcanaList: React.SFC<Props> = props => {
         <div>
             {arcanaArray.map((arcana: any) => 
                 <ArcanaCell
-                    key={arcana.arcanaID}
+                    key={arcana.uid}
                     arcana={arcana}
                 />
             )}

@@ -57,7 +57,7 @@ const ArcanaCell = (props: Props) => {
             imageURL, iconURL, rarity, weapon, affiliation, numberOfViews } = arcana;
 
     return (
-        <Link to={`/arcana?arcana=${arcanaID}`}>
+        <Link to={`/arcana?arcana=${uid}`}>
         <ArcanaCard>
             <LazyLoad height={66} debounce={300} once={true}>
                 <ArcanaIcon
