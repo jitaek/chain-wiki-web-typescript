@@ -53,7 +53,7 @@ const ArcanaCell = (props: Props) => {
 
     const { arcana } = props;
 
-    const { arcanaID, nameKR, nicknameKR, nameJP, nicknameJP,
+    const { uid, nameKR, nicknameKR, nameJP, nicknameJP,
             imageURL, iconURL, rarity, weapon, affiliation, numberOfViews } = arcana;
 
     return (
