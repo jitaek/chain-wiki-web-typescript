@@ -4,6 +4,8 @@ import styled from '../../util/styled-components';
 import { TabProps } from '@material-ui/core/Tab';
 import SwipeableViews from 'react-swipeable-views';
 import ArcanaList from '../ArcanaList/ArcanaList';
+import RootStore from '../../stores/RootStore';
+import { inject, observer } from 'mobx-react';
 
 const StyledTab = styled(Tab as React.SFC<TabProps>)`
     && {
@@ -23,25 +25,42 @@ interface Props {
     abyssalArray: any[];
 }
 
+interface InjectedProps extends Props {
+    rootStore: RootStore
+}
+@inject('rootStore')
+@observer
 class HomeTab extends React.Component<Props> {
 
-    state = {
-        value: 0
-    };
+    get injected() {
+        return this.props as InjectedProps;
+    }
 
     handleChange = (event: any, value: any) => {
-        this.setState({ value });
+
+        const { rootStore } = this.injected;
+        const { homeStore } = rootStore;
+        homeStore.setSelectedTab(value);
+
     };
 
     handleChangeIndex = (index: number) => {
-        this.setState({ value: index });
+        
+        const { rootStore } = this.injected;
+        const { homeStore } = rootStore;
+        homeStore.setSelectedTab(index);
+
     };
 
     render() {
+
+        const { rootStore } = this.injected;
+        const { homeStore } = rootStore;
+
         return (
             <div>
                 <Tabs
-                    value={this.state.value}
+                    value={homeStore.selectedTab}
                     onChange={this.handleChange}
                     indicatorColor="primary"
                     fullWidth
@@ -54,7 +73,7 @@ class HomeTab extends React.Component<Props> {
                     )}
                 </Tabs>
                 <SwipeableViews
-                    index={this.state.value}
+                    index={homeStore.selectedTab}
                     onChangeIndex={this.handleChangeIndex}
                 >
                     <ArcanaList

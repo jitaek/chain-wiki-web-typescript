@@ -1,9 +1,10 @@
 import * as React from 'react'
 import ArcanaCell from '../../components/ArcanaCell/ArcanaCell';
+import { ViewType } from '../ViewTypeMenu/ViewType';
 
 interface Props {
     arcanaArray: any[],
-    viewType?: 'grid' | 'list'
+    viewType?: ViewType
 }
 const ArcanaList: React.SFC<Props> = props => {
 
@@ -40,5 +41,5 @@ const ArcanaList: React.SFC<Props> = props => {
         // }
 
 }
-ArcanaList.defaultProps = { viewType: 'list' }
+
 export default ArcanaList;

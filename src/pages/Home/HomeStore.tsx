@@ -2,9 +2,17 @@ import { observable, action, computed } from 'mobx';
 import RootStore from '../../stores/RootStore';
 import { FUNCTIONS } from '../../util/config';
 
+export enum ArcanaTab {
+    REWARD,
+    FESTIVAL,
+    RECENT,
+    LEGEND,
+    ABYSSAL
+};
 export default class HomeStore {
 
     rootStore: RootStore;
+    @observable selectedTab: ArcanaTab = ArcanaTab.REWARD;
     @observable rewardArray: Array<any> = [];
     @observable festivalArray: Array<any> = [];
     @observable recentArray: Array<any> = [];
@@ -19,6 +27,10 @@ export default class HomeStore {
 
     constructor(rootStore: RootStore) {
         this.rootStore = rootStore;
+    }
+
+    @action setSelectedTab = (selectedTab: ArcanaTab) => {
+        this.selectedTab = selectedTab;
     }
 
     @action fetchArcana = () => {

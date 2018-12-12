@@ -4,6 +4,7 @@ import ArcanaList from '../../components/ArcanaList/ArcanaList';
 import HomeTab from '../../components/Tabs/HomeTab';
 import { inject, observer } from 'mobx-react';
 import RootStore from '../../stores/RootStore';
+import ViewTypeMenu from '../../components/ViewTypeMenu/ViewTypeMenu';
 let mockDecks = require('../../components/ArcanaCell/decks.json');
 
 interface Props {
@@ -67,6 +68,9 @@ export default class Home extends React.Component<Props> {
 
         return (
             <div>
+                <div style={{textAlign: 'right'}}>
+                    <ViewTypeMenu/>
+                </div>
                 <HomeTab
                     rewardArray={homeStore.rewardArray}
                     festivalArray={homeStore.festivalArray}
