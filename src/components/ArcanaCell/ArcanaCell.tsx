@@ -11,7 +11,7 @@ interface Props {
     arcana: any;
 }
 
-const ArcanaCard = styled.div`
+const Card = styled.div`
     height: 90px;
     display: flex;
     align-items: center;  
@@ -58,7 +58,7 @@ const ArcanaCell = (props: Props) => {
 
     return (
         <Link to={`/arcana?arcana=${uid}`}>
-        <ArcanaCard>
+        <Card>
             <LazyLoad height={66} debounce={300} once={true}>
                 <ArcanaIcon
                     src={iconURL || logo}
@@ -84,7 +84,7 @@ const ArcanaCell = (props: Props) => {
                     <DetailLabel>조회 {numberOfViews}</DetailLabel>
                 </FlexContainer>
             </div>
-        </ArcanaCard>
+        </Card>
     </Link>
     );
 }

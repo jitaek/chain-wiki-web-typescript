@@ -1,6 +1,8 @@
 import * as React from 'react'
 import ArcanaCell from '../../components/ArcanaCell/ArcanaCell';
 import { ViewType } from '../ViewTypeMenu/ViewType';
+import ArcanaGrid from '../Grid/ArcanaGrid';
+import ArcanaCard from '../ArcanaCard/ArcanaCard';
 
 interface Props {
     arcanaArray: any[],
@@ -12,12 +14,23 @@ const ArcanaList: React.SFC<Props> = props => {
 
     return (
         <div>
-            {arcanaArray.map((arcana: any) => 
-                <ArcanaCell
-                    key={arcana.uid}
-                    arcana={arcana}
-                />
-            )}
+            {viewType === ViewType.List && 
+                arcanaArray.map((arcana: any) => 
+                    <ArcanaCell
+                        key={arcana.uid}
+                        arcana={arcana}
+                    />
+                )
+            }
+            {viewType === ViewType.Grid &&
+                <ArcanaGrid>
+                    {arcanaArray.map((arcana: any) => 
+                        <ArcanaCard
+                        arcana={arcana}
+                        />
+                    )}
+                </ArcanaGrid>
+            }
         </div>
     );
 

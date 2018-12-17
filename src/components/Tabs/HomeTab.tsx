@@ -55,7 +55,7 @@ class HomeTab extends React.Component<Props> {
     render() {
 
         const { rootStore } = this.injected;
-        const { homeStore } = rootStore;
+        const { homeStore, viewTypeStore } = rootStore;
 
         return (
             <div>
@@ -67,6 +67,7 @@ class HomeTab extends React.Component<Props> {
                 >
                     {CATEGORIES.map(category => 
                         <StyledTab
+                            key={category}
                             label={category}
                             disableRipple={true}
                         />
@@ -78,18 +79,23 @@ class HomeTab extends React.Component<Props> {
                 >
                     <ArcanaList
                         arcanaArray={this.props.rewardArray}
+                        viewType={viewTypeStore.viewType}
                     />
                     <ArcanaList
                         arcanaArray={this.props.festivalArray}
+                        viewType={viewTypeStore.viewType}
                     />
                     <ArcanaList
                         arcanaArray={this.props.recentArray}
+                        viewType={viewTypeStore.viewType}
                     />
                     <ArcanaList
                         arcanaArray={this.props.legendArray}
+                        viewType={viewTypeStore.viewType}
                     />
                     <ArcanaList
                         arcanaArray={this.props.abyssalArray}
+                        viewType={viewTypeStore.viewType}
                     />
                 </SwipeableViews>
             </div>
