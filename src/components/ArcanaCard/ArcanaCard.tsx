@@ -1,41 +1,15 @@
 import React from 'react'
 import Link from '../Link/Link';
-import styled from '../../util/styled-components';
+import styled, { keyframes } from '../../util/styled-components';
 import LazyLoad from 'react-lazyload';
-import { keyframes } from 'styled-components';
 
-const fadein = keyframes`
+const fadeIn = keyframes`
     from {
         opacity: 0.01;
     }
     to {
         opacity: 0.99;
     }
-`;
-const PlaceholderContainer = styled.div`
-
-    /* opacity: 0.01; */
-    padding-top: 150%;
-    position: relative;
-`;
-
-const CardContainer = styled.div`
-
-    padding-top: 150%;
-    position: relative;
-
-    
-    /* opacity: 0.99; */
-    transition: opacity 0.4s ease-out;
-    -ms-transition: opacity 0.4s ease-out;
-    -moz-transition: opacity 0.4s ease-out;
-    -webkit-transition: opacity 0.4s ease-out;
-
-    border: 1px hidden;
-    border-radius: 3px;
-    box-shadow: 1px 1px #888888;
-    overflow:hidden;  
-
 `;
 
 const Image = styled.img`
@@ -55,6 +29,29 @@ const Image = styled.img`
         object-fit: cover;
         object-position: center center;
     }
+
+`;
+
+const PlaceholderContainer = styled.div`
+
+    padding-top: 150%;
+    position: relative;
+    ${Image} {
+        display: none;
+    }
+`;
+
+const CardContainer = styled.div`
+
+    padding-top: 150%;
+    position: relative;
+
+    animation: ${fadeIn} 0.4s ease-out;
+
+    border: 1px hidden;
+    border-radius: 3px;
+    box-shadow: 1px 1px #888888;
+    overflow: hidden;  
 
 `;
 

@@ -26,6 +26,7 @@ const ArcanaList: React.SFC<Props> = props => {
                 <ArcanaGrid>
                     {arcanaArray.map((arcana: any) => 
                         <ArcanaCard
+                        key={arcana.uid}
                         arcana={arcana}
                         />
                     )}
