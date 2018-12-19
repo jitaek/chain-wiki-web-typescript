@@ -1,6 +1,7 @@
 import { observable, action, computed } from 'mobx';
 import RootStore from '../../stores/RootStore';
 import { FUNCTIONS } from '../../util/config';
+import * as queryString from 'query-string';
 
 export enum ArcanaTab {
     REWARD,
@@ -29,8 +30,25 @@ export default class HomeStore {
         this.rootStore = rootStore;
     }
 
+    @action parseIndex = () => {
+        const parsedQuery = queryString.parse(location.search);
+        const queryIndex = parsedQuery.index;
+        if (queryIndex) {
+            let indexString: string;
+            if (queryIndex instanceof Array && (queryIndex.length > 0)) {
+                indexString = queryIndex[0];
+            }
+              else {
+                indexString = queryIndex as string;
+            }
+            const index = parseInt(indexString);
+            this.setSelectedTab(index);
+        }
+    }
+
     @action setSelectedTab = (selectedTab: ArcanaTab) => {
         this.selectedTab = selectedTab;
+        this.rootStore.routerStore.push(`?index=${selectedTab}`)
     }
 
     @action fetchArcana = () => {
