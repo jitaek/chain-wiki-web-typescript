@@ -5,7 +5,7 @@ import { ViewType } from '../components/ViewTypeMenu/ViewType';
 export default class ViewTypeStore {
 
     rootStore: RootStore;
-    @observable viewType: ViewType;// = ViewType.Grid;
+    @observable viewType = ViewType.Grid;
     @observable showMenu = false;
 
     constructor(rootStore: RootStore) {
