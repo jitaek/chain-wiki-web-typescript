@@ -26,7 +26,7 @@ export default class Home extends React.Component<Props> {
 
         const { rootStore } = this.injected;
         rootStore.homeStore.fetchArcana();
-
+        rootStore.homeStore.parseIndex();
     }
 
     componentDidMount() {
